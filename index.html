@@ -23,7 +23,7 @@
         color: #333;
       }
 
-      /* Navbar */
+      /* NAVBAR */
       nav {
         background: white;
         padding: 15px 40px;
@@ -31,6 +31,7 @@
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid #eee;
+        position: relative;
       }
 
       .logo {
@@ -53,7 +54,22 @@
         font-weight: 500;
       }
 
-      /* Layout */
+      /* Hamburger */
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+      }
+
+      .menu-toggle div {
+        width: 25px;
+        height: 3px;
+        background: #333;
+        border-radius: 2px;
+      }
+
+      /* LAYOUT */
       .container {
         display: flex;
         gap: 40px;
@@ -67,7 +83,6 @@
         gap: 20px;
       }
 
-      /* Story Card */
       .story-card {
         background: white;
         padding: 25px;
@@ -86,17 +101,39 @@
         margin-bottom: 10px;
       }
 
-      .story-card h2 {
-        margin-bottom: 5px;
-      }
-
       .author {
         font-size: 14px;
         color: #777;
         margin-bottom: 15px;
       }
 
-      /* Form Card */
+      /* Replies */
+      .replies {
+        margin-top: 15px;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+      }
+
+      .reply-box {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .reply-box input {
+        flex: 1;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+      }
+
+      .reply {
+        font-size: 14px;
+        margin-top: 5px;
+        color: #555;
+      }
+
+      /* Form */
       .form-card {
         background: white;
         padding: 25px;
@@ -109,13 +146,6 @@
         margin-bottom: 15px;
       }
 
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 14px;
-        font-weight: 600;
-      }
-
       input,
       select,
       textarea {
@@ -123,12 +153,11 @@
         padding: 10px;
         border-radius: 6px;
         border: 1px solid #ddd;
-        font-size: 14px;
       }
 
       textarea {
-        resize: vertical;
         min-height: 100px;
+        resize: vertical;
       }
 
       button {
@@ -140,15 +169,30 @@
         color: white;
         cursor: pointer;
         background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
-        transition: 0.2s;
       }
 
-      button:hover {
-        opacity: 0.9;
-      }
+      /* MOBILE */
+      @media (max-width: 768px) {
+        nav ul {
+          position: absolute;
+          top: 60px;
+          right: 0;
+          background: white;
+          flex-direction: column;
+          width: 200px;
+          padding: 20px;
+          display: none;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
 
-      /* Mobile */
-      @media (max-width: 900px) {
+        nav ul.active {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: flex;
+        }
+
         .container {
           flex-direction: column;
         }
@@ -164,38 +208,32 @@
   <body>
     <nav>
       <div class="logo">PrideSpace</div>
-      <ul>
+
+      <ul id="navLinks">
         <li><a href="#">Home</a></li>
         <li><a href="#">Read Stories</a></li>
         <li><a href="#">Share</a></li>
       </ul>
+
+      <div class="menu-toggle" id="menuToggle">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </nav>
 
     <div class="container">
-      <!-- Stories Column -->
-      <div class="stories">
-        <div class="story-card">
-          <div class="tag">Identity</div>
-          <h2>Finding My True Self</h2>
-          <div class="author">By Alex</div>
-          <p>
-            It took me a long time to understand who I was. Growing up in a
-            small town, I never saw people like me. But when I finally accepted
-            myself, it felt like a weight had been lifted. I am proud to be me.
-          </p>
-        </div>
-      </div>
+      <div class="stories"></div>
 
-      <!-- Form -->
       <div class="form-card">
         <div class="form-group">
           <label>Title</label>
-          <input type="text" placeholder="e.g., The day I came out..." />
+          <input type="text" id="titleInput" />
         </div>
 
         <div class="form-group">
           <label>Category</label>
-          <select>
+          <select id="categorySelect">
             <option>Coming Out</option>
             <option>Identity</option>
             <option>Support</option>
@@ -203,16 +241,16 @@
         </div>
 
         <div class="form-group">
-          <label>Pseudonym (Optional)</label>
-          <input type="text" placeholder="e.g., A Brave Heart" />
+          <label>Pseudonym</label>
+          <input type="text" id="pseudonymInput" />
         </div>
 
         <div class="form-group">
           <label>Your Story</label>
-          <textarea placeholder="Write your experience here..."></textarea>
+          <textarea id="storyTextarea"></textarea>
         </div>
 
-        <button>Publish Story</button>
+        <button id="publishBtn">Publish Story</button>
       </div>
     </div>
 
@@ -239,21 +277,33 @@
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
 
-      const publishBtn = document.querySelector("button");
-      const titleInput = document.querySelectorAll("input")[0];
-      const pseudonymInput = document.querySelectorAll("input")[1];
-      const categorySelect = document.querySelector("select");
-      const storyTextarea = document.querySelector("textarea");
+      const publishBtn = document.getElementById("publishBtn");
+      const titleInput = document.getElementById("titleInput");
+      const pseudonymInput = document.getElementById("pseudonymInput");
+      const categorySelect = document.getElementById("categorySelect");
+      const storyTextarea = document.getElementById("storyTextarea");
       const storyContainer = document.querySelector(".stories");
 
+      /* Validation + Publish */
       publishBtn.addEventListener("click", async () => {
-        if (!titleInput.value || !storyTextarea.value) return;
+        const title = titleInput.value.trim();
+        const story = storyTextarea.value.trim();
+
+        if (!title) {
+          alert("Title is required.");
+          return;
+        }
+
+        if (!story) {
+          alert("Story content is required.");
+          return;
+        }
 
         await addDoc(collection(db, "stories"), {
-          title: titleInput.value,
+          title,
           category: categorySelect.value,
           author: pseudonymInput.value || "Anonymous",
-          content: storyTextarea.value,
+          content: story,
           createdAt: new Date(),
         });
 
@@ -262,27 +312,78 @@
         storyTextarea.value = "";
       });
 
+      /* Real-time Stories */
       const q = query(collection(db, "stories"), orderBy("createdAt", "desc"));
 
       onSnapshot(q, (snapshot) => {
-        document
-          .querySelectorAll(".dynamic-story")
-          .forEach((el) => el.remove());
+        storyContainer.innerHTML = "";
 
-        snapshot.forEach((doc) => {
-          const story = doc.data();
+        snapshot.forEach((docSnap) => {
+          const story = docSnap.data();
+          const storyId = docSnap.id;
 
-          const div = document.createElement("div");
-          div.className = "story-card dynamic-story";
-          div.innerHTML = `
+          const card = document.createElement("div");
+          card.className = "story-card";
+
+          card.innerHTML = `
       <div class="tag">${story.category}</div>
       <h2>${story.title}</h2>
       <div class="author">By ${story.author}</div>
       <p>${story.content}</p>
+      <div class="replies" id="replies-${storyId}"></div>
+      <div class="reply-box">
+        <input type="text" id="replyInput-${storyId}" placeholder="Write a reply..."/>
+        <button onclick="addReply('${storyId}')">Reply</button>
+      </div>
     `;
 
-          storyContainer.prepend(div);
+          storyContainer.appendChild(card);
+
+          listenToReplies(storyId);
         });
+      });
+
+      /* Replies */
+      window.addReply = async (storyId) => {
+        const input = document.getElementById(`replyInput-${storyId}`);
+        const text = input.value.trim();
+
+        if (!text) {
+          alert("Reply cannot be empty.");
+          return;
+        }
+
+        await addDoc(collection(db, "stories", storyId, "replies"), {
+          text,
+          createdAt: new Date(),
+        });
+
+        input.value = "";
+      };
+
+      function listenToReplies(storyId) {
+        const repliesRef = collection(db, "stories", storyId, "replies");
+
+        onSnapshot(repliesRef, (snapshot) => {
+          const container = document.getElementById(`replies-${storyId}`);
+          container.innerHTML = "";
+
+          snapshot.forEach((doc) => {
+            const reply = doc.data();
+            const p = document.createElement("div");
+            p.className = "reply";
+            p.textContent = reply.text;
+            container.appendChild(p);
+          });
+        });
+      }
+
+      /* Mobile Menu */
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
       });
     </script>
   </body>
