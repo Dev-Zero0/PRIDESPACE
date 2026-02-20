@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrideSpace</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: #f4f5f7;
+        color: #333;
+      }
+
+      /* Navbar */
+      nav {
+        background: white;
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 20px;
+        background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #555;
+        font-weight: 500;
+      }
+
+      /* Layout */
+      .container {
+        display: flex;
+        gap: 40px;
+        padding: 40px;
+      }
+
+      .stories {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* Story Card */
+      .story-card {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border-left: 6px solid purple;
+      }
+
+      .tag {
+        display: inline-block;
+        background: #f1eaff;
+        color: #7f00ff;
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+      }
+
+      .story-card h2 {
+        margin-bottom: 5px;
+      }
+
+      .author {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 15px;
+      }
+
+      /* Form Card */
+      .form-card {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        width: 35%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        color: white;
+        cursor: pointer;
+        background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
+        transition: 0.2s;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      /* Mobile */
+      @media (max-width: 900px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .stories,
+        .form-card {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">PrideSpace</div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Read Stories</a></li>
+        <li><a href="#">Share</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <!-- Stories Column -->
+      <div class="stories">
+        <div class="story-card">
+          <div class="tag">Identity</div>
+          <h2>Finding My True Self</h2>
+          <div class="author">By Alex</div>
+          <p>
+            It took me a long time to understand who I was. Growing up in a
+            small town, I never saw people like me. But when I finally accepted
+            myself, it felt like a weight had been lifted. I am proud to be me.
+          </p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-card">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" placeholder="e.g., The day I came out..." />
+        </div>
+
+        <div class="form-group">
+          <label>Category</label>
+          <select>
+            <option>Coming Out</option>
+            <option>Identity</option>
+            <option>Support</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Pseudonym (Optional)</label>
+          <input type="text" placeholder="e.g., A Brave Heart" />
+        </div>
+
+        <div class="form-group">
+          <label>Your Story</label>
+          <textarea placeholder="Write your experience here..."></textarea>
+        </div>
+
+        <button>Publish Story</button>
+      </div>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        onSnapshot,
+        query,
+        orderBy,
+      } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCpkRcmTFE4EslVH6fah7C8milZXB_3e54",
+        authDomain: "pridespace-fb3a3.firebaseapp.com",
+        projectId: "pridespace-fb3a3",
+        storageBucket: "pridespace-fb3a3.firebasestorage.app",
+        messagingSenderId: "409422383001",
+        appId: "1:409422383001:web:f91c804a23a2aa03ac3508",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const publishBtn = document.querySelector("button");
+      const titleInput = document.querySelectorAll("input")[0];
+      const pseudonymInput = document.querySelectorAll("input")[1];
+      const categorySelect = document.querySelector("select");
+      const storyTextarea = document.querySelector("textarea");
+      const storyContainer = document.querySelector(".stories");
+
+      publishBtn.addEventListener("click", async () => {
+        if (!titleInput.value || !storyTextarea.value) return;
+
+        await addDoc(collection(db, "stories"), {
+          title: titleInput.value,
+          category: categorySelect.value,
+          author: pseudonymInput.value || "Anonymous",
+          content: storyTextarea.value,
+          createdAt: new Date(),
+        });
+
+        titleInput.value = "";
+        pseudonymInput.value = "";
+        storyTextarea.value = "";
+      });
+
+      const q = query(collection(db, "stories"), orderBy("createdAt", "desc"));
+
+      onSnapshot(q, (snapshot) => {
+        document
+          .querySelectorAll(".dynamic-story")
+          .forEach((el) => el.remove());
+
+        snapshot.forEach((doc) => {
+          const story = doc.data();
+
+          const div = document.createElement("div");
+          div.className = "story-card dynamic-story";
+          div.innerHTML = `
+      <div class="tag">${story.category}</div>
+      <h2>${story.title}</h2>
+      <div class="author">By ${story.author}</div>
+      <p>${story.content}</p>
+    `;
+
+          storyContainer.prepend(div);
+        });
+      });
+    </script>
+  </body>
+</html>
