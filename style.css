@@ -117,12 +117,12 @@ nav a {
 
 .tag {
   display: inline-block;
-  background: #2d174d;
-  color: #c084fc;
-  padding: 5px 12px;
+  background: rgba(127, 0, 255, 0.15);
+  color: #7f00ff;
+  padding: 6px 14px;
   font-size: 12px;
-  border-radius: 20px;
-  margin-bottom: 10px;
+  border-radius: 30px;
+  font-weight: 600;
 }
 
 .author {
