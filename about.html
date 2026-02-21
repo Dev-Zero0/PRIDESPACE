@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - PrideSpace</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: #f4f5f7;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      header {
+        padding: 30px 20px;
+        text-align: center;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      header h1 {
+        font-size: 36px;
+        background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+      }
+
+      header p {
+        font-size: 18px;
+        color: #555;
+      }
+
+      .about-section {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+        display: flex;
+        gap: 50px;
+        flex-wrap: wrap;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .about-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .about-section img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-content {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .about-content h2 {
+        font-size: 32px;
+        background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+      }
+
+      .about-content p {
+        margin-bottom: 15px;
+        color: #555;
+      }
+
+      .team-section {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+      }
+
+      .team-section h2 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 40px;
+        background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .team-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+      }
+
+      .team-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        width: 250px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition:
+          transform 0.2s ease,
+          opacity 0.8s ease,
+          translate 0.8s ease;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .team-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .team-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .team-card img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+      }
+
+      .team-card h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+
+      .team-card p {
+        font-size: 14px;
+        color: #777;
+      }
+
+      @media (max-width: 768px) {
+        .about-section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .about-content h2 {
+          font-size: 28px;
+        }
+
+        .about-content p {
+          font-size: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>About PrideSpace</h1>
+      <p>
+        A safe, inclusive platform for sharing LGBTQ+ stories and experiences.
+      </p>
+    </header>
+
+    <section class="about-section">
+      <img
+        src="https://s.yimg.com/ny/api/res/1.2/CbXaaE36KwGHZQEKYVGS3A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU0MDtjZj13ZWJw/https://s.yimg.com/os/creatr-uploaded-images/2022-06/ebb4d9f0-f821-11ec-9bfe-0490fcf614d1"
+        alt="Community image"
+      />
+      <div class="about-content">
+        <h2>Our Mission</h2>
+        <p>
+          PrideSpace empowers voices, celebrates identities, and fosters a
+          compassionate community where everyone feels heard and valued.
+        </p>
+        <p>
+          From coming out stories to seeking support, our platform brings people
+          together through real experiences, understanding, and encouragement.
+        </p>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <h2>Meet the Team</h2>
+      <div class="team-cards">
+        <div class="team-card">
+          <img
+            src="https://cdn.vectorstock.com/i/500p/43/97/default-avatar-photo-placeholder-icon-grey-vector-38594397.jpg"
+            alt="Team Member 1"
+          />
+          <h3>Marc Sebastian Delas Alas</h3>
+          <p>Lead Programmer</p>
+        </div>
+        <div class="team-card">
+          <img
+            src="https://cdn.vectorstock.com/i/500p/43/97/default-avatar-photo-placeholder-icon-grey-vector-38594397.jpg"
+            alt="Team Member 2"
+          />
+          <h3>Elisha Jaden Angeles</h3>
+          <p>Team Leader</p>
+        </div>
+        <div class="team-card">
+          <img
+            src="https://cdn.vectorstock.com/i/500p/43/97/default-avatar-photo-placeholder-icon-grey-vector-38594397.jpg"
+            alt="Team Member 3"
+          />
+          <h3>Charles Crisostomo</h3>
+          <p>Design & UX</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Intersection Observer for fade-up animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 },
+      );
+
+      document
+        .querySelectorAll(".about-section, .team-card")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
