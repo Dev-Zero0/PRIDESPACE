@@ -10,7 +10,6 @@
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="images/icon.png" type="image/x-icon" />
-
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -18,9 +17,8 @@
     <nav>
       <div class="logo">PrideSpace</div>
       <ul id="navLinks">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Read Stories</a></li>
-        <li><a href="#">Share</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About Us</a></li>
       </ul>
       <div class="menu-toggle" id="menuToggle">
         <div></div>
@@ -30,8 +28,20 @@
     </nav>
 
     <div class="container">
-      <div class="stories"></div>
+      <!-- LEFT SIDE -->
+      <div class="left-panel">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by title, author, or category..."
+          />
+        </div>
 
+        <div class="stories"></div>
+      </div>
+
+      <!-- RIGHT SIDE -->
       <div class="form-card">
         <div class="form-group">
           <label>Title</label>
@@ -44,6 +54,7 @@
             <option>Coming Out</option>
             <option>Identity</option>
             <option>Support</option>
+            <option>Testing</option>
           </select>
         </div>
 

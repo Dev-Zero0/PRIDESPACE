@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
+
 body {
   background: url(images/background.png);
   background-position: center;
@@ -13,15 +14,16 @@ body {
 }
 
 /* NAVBAR */
+
 nav {
-  background: white;
+  background: black;
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eee;
   position: relative;
 }
+
 .logo {
   font-weight: 700;
   font-size: 20px;
@@ -29,264 +31,181 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 nav ul {
   display: flex;
   list-style: none;
   gap: 30px;
 }
+
 nav a {
   text-decoration: none;
-  color: #555;
+  color: white;
   font-weight: 500;
 }
+
 .menu-toggle {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
 }
+
 .menu-toggle div {
   width: 25px;
   height: 3px;
-  background: #333;
+  background: white;
   border-radius: 2px;
 }
 
 /* LAYOUT */
+
 .container {
   display: flex;
   gap: 40px;
   padding: 40px;
 }
-.stories {
+
+/* LEFT PANEL */
+
+.left-panel {
   width: 60%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
-.story-card {
-  background: white;
-  padding: 25px;
+
+.reply {
+  margin-bottom: 12px;
+  margin-top: 18px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 14px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-left: 6px solid purple;
+  border: none;
+  font-size: 14px;
+  background: #222;
+  color: white;
 }
+
+.search-bar input::placeholder {
+  color: #aaa;
+}
+
+.stories {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.story-card {
+  background: #111;
+  padding: 25px;
+  border-radius: 14px;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
 .tag {
   display: inline-block;
-  background: #f1eaff;
-  color: #7f00ff;
-  padding: 5px 10px;
+  background: #2d174d;
+  color: #c084fc;
+  padding: 5px 12px;
   font-size: 12px;
   border-radius: 20px;
   margin-bottom: 10px;
 }
+
 .author {
   font-size: 14px;
-  color: #777;
+  color: #aaa;
   margin-bottom: 5px;
 }
+
 .timestamp {
   font-size: 12px;
-  color: #aaa;
+  color: #666;
   margin-bottom: 15px;
 }
 
-/* Replies */
-.replies {
-  margin-top: 15px;
-  padding-left: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.reply-box {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-.reply-box input {
-  flex: 1 1 auto;
-  min-width: 0;
-  padding: 12px;
-  font-size: 14px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  transition: all 0.3s ease;
-}
-.reply-box button {
-  width: 90px;
-  flex-shrink: 0;
-  padding: 12px;
-  font-size: 14px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.reply {
-  font-size: 14px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: #f9f9f9;
-  border-left: 3px solid #7f00ff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.reply span.timestamp {
-  font-size: 11px;
-  color: #888;
-  margin-right: 10px;
+.story-card p {
+  line-height: 1.6;
 }
 
-/* Form */
+/* FORM */
+
 .form-card {
-  background: white;
-  padding: 25px;
   width: 35%;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: #111;
+  padding: 25px;
+  border-radius: 14px;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
+
 .form-group {
   margin-bottom: 15px;
 }
+
 input,
 select,
 textarea {
   width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-  transition:
-    border 0.2s,
-    box-shadow 0.2s;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #222;
+  color: white;
+  margin-bottom: 10px;
 }
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: #7f00ff;
-  box-shadow: 0 0 5px rgba(127, 0, 255, 0.2);
-  outline: none;
-}
+
 textarea {
-  min-height: 100px;
+  min-height: 120px;
   resize: vertical;
 }
+
 button {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
   color: white;
   cursor: pointer;
-  background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-
-/* Spinner */
-.spinner {
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #7f00ff;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  animation: spin 1s linear infinite;
-  display: inline-block;
-  vertical-align: middle;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Skeleton Loader */
-.skeleton-card {
-  background: #eee;
-  border-radius: 10px;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  animation: pulse 1.5s infinite;
-}
-.skeleton-tag,
-.skeleton-title,
-.skeleton-text {
-  background: #ddd;
-  border-radius: 6px;
-}
-.skeleton-tag {
-  width: 80px;
-  height: 18px;
-}
-.skeleton-title {
-  width: 60%;
-  height: 20px;
-  margin-top: 5px;
-}
-.skeleton-text {
-  width: 100%;
-  height: 14px;
-  margin-top: 5px;
-}
-@keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-  100% {
-    opacity: 1;
-  }
+  background: linear-gradient(135deg, #7f00ff, #5b00cc);
 }
 
 /* MOBILE */
+
 @media (max-width: 768px) {
   nav ul {
     position: absolute;
     top: 60px;
     right: 0;
-    background: white;
+    background: black;
     flex-direction: column;
     width: 200px;
     padding: 20px;
     display: none;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transform: translateX(100%);
-    opacity: 0;
-    transition:
-      transform 0.3s ease,
-      opacity 0.3s ease;
   }
+
   nav ul.active {
     display: flex;
-    transform: translateX(0);
-    opacity: 1;
   }
+
   .menu-toggle {
     display: flex;
   }
+
   .container {
     flex-direction: column;
   }
-  .stories,
+
+  .left-panel,
   .form-card {
-    width: 100%;
-  }
-  .reply-box {
-    flex-direction: column;
-  }
-  .reply-box input,
-  .reply-box button {
     width: 100%;
   }
 }
