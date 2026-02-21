@@ -4,9 +4,11 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
-
 body {
-  background: #f4f5f7;
+  background: url(images/background.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #333;
 }
 
@@ -20,7 +22,6 @@ nav {
   border-bottom: 1px solid #eee;
   position: relative;
 }
-
 .logo {
   font-weight: 700;
   font-size: 20px;
@@ -28,27 +29,22 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 nav ul {
   display: flex;
   list-style: none;
   gap: 30px;
 }
-
 nav a {
   text-decoration: none;
   color: #555;
   font-weight: 500;
 }
-
-/* Hamburger */
 .menu-toggle {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
 }
-
 .menu-toggle div {
   width: 25px;
   height: 3px;
@@ -56,44 +52,39 @@ nav a {
   border-radius: 2px;
 }
 
-/* Layout */
+/* LAYOUT */
 .container {
   display: flex;
   gap: 40px;
   padding: 40px;
 }
-
 .stories {
   width: 60%;
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 30px;
 }
-
 .story-card {
   background: white;
   padding: 25px;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border-left: 6px solid purple;
 }
-
 .tag {
   display: inline-block;
   background: #f1eaff;
   color: #7f00ff;
-  padding: 5px 12px;
+  padding: 5px 10px;
   font-size: 12px;
   border-radius: 20px;
   margin-bottom: 10px;
 }
-
 .author {
   font-size: 14px;
   color: #777;
   margin-bottom: 5px;
 }
-
 .timestamp {
   font-size: 12px;
   color: #aaa;
@@ -103,60 +94,61 @@ nav a {
 /* Replies */
 .replies {
   margin-top: 15px;
-  padding-left: 10px;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
-
-.reply {
-  font-size: 14px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: #f9f9f9;
-  border-left: 3px solid #7f00ff;
-}
-
-/* Reply Box */
 .reply-box {
   display: flex;
-  align-items: center;
   gap: 10px;
-  margin-top: 15px;
-  width: 100%;
+  margin-top: 10px;
+  flex-wrap: wrap;
 }
-
 .reply-box input {
-  flex: 1;
-  width: 100%;
+  flex: 1 1 auto;
   min-width: 0;
   padding: 12px;
   font-size: 14px;
   border-radius: 8px;
   border: 1px solid #ddd;
+  transition: all 0.3s ease;
 }
-
 .reply-box button {
-  flex: 0 0 90px;
+  width: 90px;
+  flex-shrink: 0;
   padding: 12px;
   font-size: 14px;
   border-radius: 8px;
   cursor: pointer;
+}
+.reply {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  border-left: 3px solid #7f00ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.reply span.timestamp {
+  font-size: 11px;
+  color: #888;
+  margin-right: 10px;
 }
 
 /* Form */
 .form-card {
   background: white;
   padding: 25px;
-  border-radius: 12px;
   width: 35%;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-
 .form-group {
   margin-bottom: 15px;
 }
-
 input,
 select,
 textarea {
@@ -165,13 +157,21 @@ textarea {
   border-radius: 6px;
   border: 1px solid #ddd;
   font-size: 14px;
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
 }
-
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #7f00ff;
+  box-shadow: 0 0 5px rgba(127, 0, 255, 0.2);
+  outline: none;
+}
 textarea {
   min-height: 100px;
   resize: vertical;
 }
-
 button {
   width: 100%;
   padding: 12px;
@@ -181,6 +181,10 @@ button {
   color: white;
   cursor: pointer;
   background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 /* Spinner */
@@ -192,12 +196,56 @@ button {
   height: 18px;
   animation: spin 1s linear infinite;
   display: inline-block;
-  margin-left: 8px;
+  vertical-align: middle;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+/* Skeleton Loader */
+.skeleton-card {
+  background: #eee;
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: pulse 1.5s infinite;
+}
+.skeleton-tag,
+.skeleton-title,
+.skeleton-text {
+  background: #ddd;
+  border-radius: 6px;
+}
+.skeleton-tag {
+  width: 80px;
+  height: 18px;
+}
+.skeleton-title {
+  width: 60%;
+  height: 20px;
+  margin-top: 5px;
+}
+.skeleton-text {
+  width: 100%;
+  height: 14px;
+  margin-top: 5px;
+}
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -209,33 +257,35 @@ button {
     right: 0;
     background: white;
     flex-direction: column;
-    width: 220px;
+    width: 200px;
     padding: 20px;
     display: none;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    opacity: 0;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
   }
-
   nav ul.active {
     display: flex;
+    transform: translateX(0);
+    opacity: 1;
   }
-
   .menu-toggle {
     display: flex;
   }
-
   .container {
     flex-direction: column;
   }
-
   .stories,
   .form-card {
     width: 100%;
   }
-
   .reply-box {
     flex-direction: column;
   }
-
+  .reply-box input,
   .reply-box button {
     width: 100%;
   }
