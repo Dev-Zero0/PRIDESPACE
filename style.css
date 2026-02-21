@@ -28,8 +28,14 @@ nav {
   font-weight: 700;
   font-size: 20px;
   background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
+  user-select: none;
+  cursor: pointer;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.img-logo {
+  height: 30px;
 }
 
 nav ul {
@@ -160,8 +166,15 @@ textarea {
   background: #222;
   color: white;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: none;
+}
 textarea {
   min-height: 120px;
   resize: vertical;
