@@ -19,12 +19,20 @@
 
       body {
         background: url(images/background.png);
-        backdrop-filter: blur(3px);
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         color: #333;
         line-height: 1.6;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(3px);
+        z-index: -1;
       }
 
       header {
@@ -108,10 +116,9 @@
       }
 
       .team-cards {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 30px;
-        justify-content: center;
       }
 
       .team-card {
@@ -150,6 +157,11 @@
         margin-bottom: 15px;
       }
 
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
       .team-card h3 {
         font-size: 20px;
         margin-bottom: 5px;
@@ -164,6 +176,7 @@
         .about-section {
           flex-direction: column;
           text-align: center;
+          gap: 20px; /* reduce gap */
         }
 
         .about-content h2 {
@@ -172,6 +185,16 @@
 
         .about-content p {
           font-size: 15px;
+        }
+
+        @media (max-width: 480px) {
+          header h1 {
+            font-size: 26px;
+          }
+
+          header p {
+            font-size: 14px;
+          }
         }
       }
 
