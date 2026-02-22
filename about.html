@@ -30,8 +30,9 @@
       header {
         padding: 30px 20px;
         text-align: center;
-        background: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        background: #ffffff00;
+        box-shadow: 0 2px 10px #0000000d;
+        backdrop-filter: blur(3px);
       }
 
       header h1 {
@@ -69,7 +70,7 @@
         width: 100%;
         max-width: 500px;
         border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 20px #0000001a;
       }
 
       .about-content {
@@ -114,16 +115,17 @@
       }
 
       .team-card {
-        background: white;
+        background: #ffffff;
         border-radius: 12px;
         padding: 20px;
         width: 250px;
         text-align: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 15px #00000014;
         transition:
           transform 0.2s ease,
           opacity 0.8s ease,
-          translate 0.8s ease;
+          translate 0.8s ease,
+          background-color 0.5s ease;
         opacity: 0;
         transform: translateY(30px);
       }
@@ -134,7 +136,10 @@
       }
 
       .team-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-10px);
+        cursor: pointer;
+        background-color: #ffffff49;
+        backdrop-filter: blur(3px);
       }
 
       .team-card img {
@@ -169,6 +174,28 @@
           font-size: 15px;
         }
       }
+
+      /* FOOTER */
+      .site-footer {
+        margin-top: 80px;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+        background: #ffffff30;
+        backdrop-filter: blur(6px);
+        border-top: 1px solid #ffffff40;
+      }
+
+      .site-footer p {
+        margin-bottom: 8px;
+      }
+
+      .site-footer .crisis-text {
+        font-style: italic;
+        color: #777;
+        font-size: 13px;
+      }
     </style>
   </head>
   <body>
@@ -202,27 +229,57 @@
       <div class="team-cards">
         <div class="team-card">
           <img
-            src="https://cdn.vectorstock.com/i/500p/43/97/default-avatar-photo-placeholder-icon-grey-vector-38594397.jpg"
+            src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/582397710_2394907220970660_132229536068836370_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeECYWoJYp4EGsa1s22T_0HHuvOyQU6M82m687JBTozzaY_Zpv2fV_0rzKktIfwKMWjw_Z9v1lZ_RSSMl6NSB_3N&_nc_ohc=0aZt-HW8n_wQ7kNvwHdz3dc&_nc_oc=Adlqy_cRvt0erZ-sFj7qgaufiCBdrTTh0I3uBWPdiJlhIBM2IV-djQ9m2Pvu3S7KTGA&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=gclfiEqiE-WIE9XZBSb5sg&oh=00_AfvH8qZi0D4eIR5WEywRslJPSCrivy-pukbhS3Gnq48NrA&oe=69A0D98E"
             alt="Team Member 1"
           />
           <h3>Marc Sebastian Delas Alas</h3>
+          <p>FEUTECH Student (BSIT)</p>
           <p>Lead Programmer</p>
         </div>
         <div class="team-card">
           <img
-            src="https://cdn.vectorstock.com/i/500p/43/97/default-avatar-photo-placeholder-icon-grey-vector-38594397.jpg"
+            src="https://scontent.fmnl17-2.fna.fbcdn.net/v/t39.30808-6/586720476_2117236305475625_4545103514405773376_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeEenpvxsZuI8hmRASdd9NsfWK5LOvSA1fxYrks69IDV_KG9W-zShvRHgL5krbEI5oRFdGJGlDr3ZDU9GQMSUQDg&_nc_ohc=DvADi-VLhjYQ7kNvwFysfHZ&_nc_oc=AdlcAxrGo-tSX0rpmA6rCRUG7uLocX5r2ZnpX4FDrMvbXmLhZbbFx5iqsfNqoX-Mmb8&_nc_zt=23&_nc_ht=scontent.fmnl17-2.fna&_nc_gid=INtDiiPmKkGezHAQmRWRbQ&oh=00_Afvb5sFmPvsgyrKiOKqSNzTwwbo0b9jkaJ9p0gH9fHaoYQ&oe=69A0EE53"
             alt="Team Member 2"
           />
           <h3>Elisha Jaden Angeles</h3>
+          <p>FEUTECH Student (BSIT)</p>
           <p>Team Leader</p>
         </div>
         <div class="team-card">
           <img
-            src="https://cdn.vectorstock.com/i/500p/43/97/default-avatar-photo-placeholder-icon-grey-vector-38594397.jpg"
+            src="https://scontent.fmnl17-5.fna.fbcdn.net/v/t1.15752-9/638849772_3074796239394908_662804892568552403_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGv2KGrySgZWUKAeDxil4V9TIUKVtCghEFMhQpW0KCEQWJR0HQoFYmEq_uyJEoolnG1re0I9ZsZDHb7X85CH4nE&_nc_ohc=CiN_GSdSii8Q7kNvwEbRjY0&_nc_oc=AdkqaHJ6ycWPbZhrIFUwlU7ngcOvHsGL0RoqTueiNGnxp6qTqg0qygmXETBtGGw0vyo&_nc_zt=23&_nc_ht=scontent.fmnl17-5.fna&oh=03_Q7cD4gHFbfxmahyijcS_Fr9dFNqMXCeQ_UhdhIp_i1MDEFRUcQ&oe=69C27B99"
             alt="Team Member 3"
           />
           <h3>Josef Crisostomo</h3>
+          <p>FEUTECH Student (BSIT)</p>
           <p>Design & UX</p>
+        </div>
+        <div class="team-card">
+          <img
+            src="https://scontent.fmnl17-2.fna.fbcdn.net/v/t39.30808-1/607308410_1373519514469248_4678203089172639046_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=111&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeF2gX-K_wLZCoMBg6_4ei0k6W__CK_ghP_pb_8Ir-CE_9Y61xXkeW8aF0ZxlDoBwHQMCu9lw9DaRzhGSgBCi_y1&_nc_ohc=cHaWzZwtpysQ7kNvwGpQm_x&_nc_oc=Adk_RIxm0rgo4Aa-Lie9Gr_qlSNM3IV2TGE6v049MPMbwgk7_lCiMJV_iLSJtVsJ5eM&_nc_zt=24&_nc_ht=scontent.fmnl17-2.fna&_nc_gid=SrviOSwmBvF5smlT0y-JSg&oh=00_AfuDiUQ0QFBC-uIC-4bm6z5ezZC6VNOBAkddeh4ghi033w&oe=69A10E53"
+            alt="Team Member 3"
+          />
+          <h3>John Carlo Severino</h3>
+          <p>FEUTECH Student (BSIT)</p>
+          <p>N/A</p>
+        </div>
+        <div class="team-card">
+          <img
+            src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/587187507_2388829784880402_3832489743421877288_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeHoei958kxsl78rEvMzN5TJ16NQTKZuWZLXo1BMpm5ZknrQ8PqaV4Sev88m9ulllzG5iXdL5b4pNaiGbKUupM5z&_nc_ohc=B3_BmMqNt1YQ7kNvwHtm5rH&_nc_oc=Adlms2VOu-2aEf-gJOOiIg8__8FsMlH3ImQH9gbsOKX6OtYLnK8kAou1wDWyZzSlOz8&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=5RCQtzzmPLyTwJ1U1xAajA&oh=00_AfsyVF04TSIRzvH5y5XM0BYN0YLfkl0-g7OuggHUbmJtDA&oe=69A0E67D"
+            alt="Team Member 3"
+          />
+          <h3>TJ Tablada</h3>
+          <p>FEUTECH Student (BSIT)</p>
+          <p>N/A</p>
+        </div>
+        <div class="team-card">
+          <img
+            src="https://scontent.fmnl17-4.fna.fbcdn.net/v/t39.30808-1/323116904_586245356675813_5401727117258555920_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=105&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeFKWUhZr3KlM1afYe_zVrhjRjLLa042JjNGMstrTjYmMwe-bcT_sjrFV4z5aJGPs_Tr8cdQmz7QeAJmLmOTa1v3&_nc_ohc=F6UWpkdLNtkQ7kNvwGJGT9N&_nc_oc=AdlWEBogO8zh2MhncLiBUmbxGjAXFGx-Q5SuCFhYfCZ39JZi5QoEwoPKtGWFErEwH_k&_nc_zt=24&_nc_ht=scontent.fmnl17-4.fna&_nc_gid=yZXho17BjCchMmeH5thgzg&oh=00_Afs9z2zGYNVCq0vE9DO7LXSex1v-k7i6USYfqGBYRiG81w&oe=69A0FD2D"
+            alt="Team Member 3"
+          />
+          <h3>Vinz Chua</h3>
+          <p>FEUTECH Student (BSIT)</p>
+          <p>N/A</p>
         </div>
       </div>
     </section>
@@ -245,5 +302,15 @@
         .querySelectorAll(".about-section, .team-card")
         .forEach((el) => observer.observe(el));
     </script>
+
+    <footer class="site-footer">
+      <p>© 2026 PrideSpace. A project for community connection.</p>
+      <p class="crisis-text">
+        If you are in crisis, please contact a local support line. <br />
+        Please note that this project is made for our school's final project,
+        please send me a feedback through this email:
+        <u> seb.archi0714@gmail.com </u>
+      </p>
+    </footer>
   </body>
 </html>
