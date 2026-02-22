@@ -1,3 +1,16 @@
+/* VARIABLE COLORS */
+
+:root {
+  --soft-pink: #f8c8dc;
+  --peach: #ffd1a9;
+  --yellow: #fff4a3;
+  --mint: #b8f2d6;
+  --sky-blue: #bde0fe;
+  --lavender: #e4c1f9;
+
+  --text-dark: #333;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,21 +26,24 @@ body {
   color: #333;
 }
 
-/* NAVBAR */
+/* NAV */
 
 nav {
-  background: black;
+  background: #111;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
+  border-bottom: 1px solid #ffffff14;
 }
 
 .logo {
   font-weight: 700;
   font-size: 20px;
-  background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
+  background: linear-gradient(90deg, #ffffff, #d4d4d4);
   user-select: none;
   cursor: pointer;
   -webkit-background-clip: text;
@@ -35,7 +51,7 @@ nav {
 }
 
 .img-logo {
-  height: 30px;
+  height: 30px; /* untouched */
 }
 
 nav ul {
@@ -48,6 +64,11 @@ nav a {
   text-decoration: none;
   color: white;
   font-weight: 500;
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  opacity: 0.7;
 }
 
 .menu-toggle {
@@ -89,15 +110,16 @@ nav a {
 .search-bar input {
   width: 100%;
   padding: 14px;
-  border-radius: 10px;
-  border: none;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 14px;
-  background: #222;
-  color: white;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  color: black;
 }
 
 .search-bar input::placeholder {
-  color: #aaa;
+  color: #ccc;
 }
 
 .stories {
@@ -108,17 +130,30 @@ nav a {
 }
 
 .story-card {
-  background: #111;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 25px;
-  border-radius: 14px;
+  border-radius: 16px;
   color: white;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.04);
+  transition: 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 0 25px rgba(255, 255, 255, 0.06);
 }
 
 .tag {
   display: inline-block;
-  background: rgba(127, 0, 255, 0.15);
-  color: #7f00ff;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
   padding: 6px 14px;
   font-size: 12px;
   border-radius: 30px;
@@ -127,13 +162,13 @@ nav a {
 
 .author {
   font-size: 14px;
-  color: #aaa;
+  color: #ddd;
   margin-bottom: 5px;
 }
 
 .timestamp {
   font-size: 12px;
-  color: #666;
+  color: #aaa;
   margin-bottom: 15px;
 }
 
@@ -145,11 +180,16 @@ nav a {
 
 .form-card {
   width: 35%;
-  background: #111;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 25px;
-  border-radius: 14px;
+  border-radius: 16px;
   color: white;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.04);
 }
 
 .form-group {
@@ -161,20 +201,23 @@ select,
 textarea {
   width: 100%;
   padding: 12px;
-  border-radius: 8px;
-  border: none;
-  background: #222;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
   color: white;
   margin-bottom: 10px;
   margin-top: 20px;
+  transition: 0.3s ease;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  box-shadow: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
 }
+
 textarea {
   min-height: 120px;
   resize: vertical;
@@ -184,11 +227,18 @@ button {
   width: 100%;
   padding: 14px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 600;
   color: white;
   cursor: pointer;
-  background: linear-gradient(135deg, #7f00ff, #5b00cc);
+  background: var(--lavender);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: var(--soft-pink);
+  transform: translateY(-2px);
 }
 
 /* MOBILE */
@@ -198,7 +248,8 @@ button {
     position: absolute;
     top: 60px;
     right: 0;
-    background: black;
+    background: #141414b3;
+    backdrop-filter: blur(20px);
     flex-direction: column;
     width: 200px;
     padding: 20px;
