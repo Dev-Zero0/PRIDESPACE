@@ -10,8 +10,6 @@
       rel="stylesheet"
     />
 
-    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon" />
-
     <style>
       :root {
         --soft-pink: #f8c8dc;
@@ -41,12 +39,10 @@
           var(--lavender)
         );
         background-size: 400% 400%;
-        animation: gradientMove 12s ease infinite;
+        animation: gradientMove 15s ease infinite;
         color: var(--text-dark);
         overflow-x: hidden;
       }
-
-      /* Makes the gradient background move */
 
       @keyframes gradientMove {
         0% {
@@ -65,45 +61,40 @@
         justify-content: space-between;
         align-items: center;
         padding: 20px 8%;
-        backdrop-filter: blur(100px);
       }
 
-      .img-logo {
+      nav img {
         height: 40px;
       }
 
-      .nav-links {
-        display: flex;
-        gap: 30px;
-      }
-
-      .nav-links a {
+      nav a {
         text-decoration: none;
         color: var(--text-dark);
         font-weight: 600;
-        transition: 0.3s;
       }
 
-      .nav-links a:hover {
-        opacity: 0.7;
+      section {
+        padding: 80px 8%;
+      }
+
+      h1,
+      h2 {
+        margin-bottom: 20px;
       }
 
       .hero {
-        min-height: 85vh;
+        min-height: 80vh;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 8%;
       }
 
       .hero-left {
         flex: 1;
-        animation: fadeUp 1s ease forwards;
       }
 
       .hero-left h1 {
-        font-size: 4rem;
-        margin-bottom: 20px;
+        font-size: 3.5rem;
       }
 
       .gradient-text {
@@ -113,111 +104,149 @@
           var(--sky-blue),
           var(--mint)
         );
-        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
       .hero-left p {
         max-width: 500px;
-        line-height: 1.6;
         margin-bottom: 30px;
+        line-height: 1.6;
       }
 
-      .buttons {
-        display: flex;
-        gap: 15px;
+      .btn {
+        padding: 12px 26px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        transition: 0.3s;
       }
 
       .btn-primary {
-        background: linear-gradient(
-          90deg,
-          var(--lavender),
-          var(--sky-blue),
-          var(--mint)
-        );
-        padding: 12px 28px;
-        border-radius: 30px;
-        text-decoration: none;
+        background: var(--lavender);
         color: var(--text-dark);
-        font-weight: 600;
-        transition: 0.3s;
       }
 
       .btn-primary:hover {
         transform: translateY(-3px);
       }
 
-      .btn-secondary {
-        background: white;
-        padding: 12px 28px;
-        border-radius: 30px;
-        text-decoration: none;
-        color: var(--text-dark);
-        border: 1px solid rgba(0, 0, 0, 0.1);
+      .blob {
+        width: 300px;
+        height: 300px;
+        background: var(--mint);
+        border-radius: 50%;
+        filter: blur(60px);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* FEATURES */
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(12px);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         transition: 0.3s;
       }
 
-      .btn-secondary:hover {
-        transform: translateY(-3px);
+      .feature-card:hover {
+        transform: translateY(-8px);
       }
 
-      .hero-right {
-        flex: 1;
-        position: relative;
-        height: 450px;
+      /* STORIES PREVIEW */
+
+      .stories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
       }
 
-      .blob {
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        opacity: 0.5;
-        filter: blur(60px);
+      .story-card {
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
       }
 
-      .blob1 {
-        background: var(--soft-pink);
-        top: 50px;
-        right: 100px;
+      .story-card:hover {
+        transform: translateY(-6px);
       }
 
-      .blob2 {
+      .badge {
+        display: inline-block;
         background: var(--mint);
-        bottom: 0;
-        right: 0;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        margin-bottom: 10px;
       }
 
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      /* TESTIMONIALS */
+
+      .testimonials {
+        display: grid;
+        gap: 20px;
+      }
+
+      .testimonial {
+        background: rgba(255, 255, 255, 0.7);
+        padding: 25px;
+        border-radius: 20px;
+        font-style: italic;
+      }
+
+      /* CTA */
+
+      .cta {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 30px;
+        padding: 60px 20px;
+        backdrop-filter: blur(10px);
+      }
+
+      .cta h2 {
+        margin-bottom: 20px;
+      }
+
+      /* SCROLL REVEAL */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 0.8s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       @media (max-width: 900px) {
         .hero {
           flex-direction: column;
           text-align: center;
-          padding-top: 60px;
-        }
-
-        .hero-left h1 {
-          font-size: 2.5rem;
-        }
-
-        .buttons {
-          justify-content: center;
-        }
-
-        .hero-right {
-          height: 250px;
-          margin-top: 40px;
+          gap: 40px;
         }
       }
     </style>
@@ -225,35 +254,89 @@
 
   <body>
     <nav>
-      <a href="index.html">
-        <img class="img-logo" src="images/image.png" alt="PrideSpace logo" />
-      </a>
-
-      <div class="nav-links">
-        <a href="index.html">Stories</a>
-        <a href="about.html">About</a>
-      </div>
+      <a href="index.html"
+        ><img src="images/image.png" alt="PrideSpace logo"
+      /></a>
+      <a href="stories.html">Enter PrideSpace</a>
     </nav>
 
     <section class="hero">
-      <div class="hero-left">
+      <div class="hero-left reveal">
         <h1>Share Your <span class="gradient-text">Story.</span></h1>
-
         <p>
-          PrideSpace is a safe digital space where voices are heard, identities
-          are embraced, and stories inspire connection.
+          A safe digital space where identities are embraced and voices are
+          heard.
         </p>
+        <a href="stories.html" class="btn btn-primary">Explore Stories</a>
+      </div>
+      <div class="blob"></div>
+    </section>
 
-        <div class="buttons">
-          <a href="stories.html" class="btn-primary">Explore Stories</a>
-          <a href="stories.html" class="btn-secondary">Share Yours</a>
+    <section class="reveal">
+      <h2>What You Can Do Here</h2>
+      <div class="features">
+        <div class="feature-card">
+          <h3>🌈 Share Freely</h3>
+          <p>Post anonymously or use a pseudonym. Your comfort comes first.</p>
+        </div>
+        <div class="feature-card">
+          <h3>💬 Discover Voices</h3>
+          <p>Explore real stories from real people navigating identity.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🤝 Feel Less Alone</h3>
+          <p>Connection through shared experiences and community support.</p>
         </div>
       </div>
+    </section>
 
-      <div class="hero-right">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
+    <section class="reveal">
+      <h2>Recent Stories</h2>
+      <div class="stories">
+        <div class="story-card">
+          <div class="badge">Coming Out</div>
+          <h3>Finding My Voice</h3>
+          <p>
+            I was terrified at first, but sharing my truth changed everything...
+          </p>
+          <small>— Alex</small>
+        </div>
+        <div class="story-card">
+          <div class="badge">Identity</div>
+          <h3>Learning Who I Am</h3>
+          <p>Understanding myself took years, but I finally feel at peace...</p>
+          <small>— Anonymous</small>
+        </div>
       </div>
     </section>
+
+    <section class="reveal">
+      <h2>What People Say</h2>
+      <div class="testimonials">
+        <div class="testimonial">“I finally felt seen.” — Anonymous</div>
+        <div class="testimonial">
+          “Reading these stories helped me accept myself.” — Jamie
+        </div>
+      </div>
+    </section>
+
+    <section class="cta reveal">
+      <h2>Your story deserves to be heard.</h2>
+      <a href="stories.html" class="btn btn-primary">Share Your Story Today</a>
+    </section>
+
+    <script>
+      const reveals = document.querySelectorAll(".reveal");
+
+      window.addEventListener("scroll", () => {
+        reveals.forEach((el) => {
+          const windowHeight = window.innerHeight;
+          const revealTop = el.getBoundingClientRect().top;
+          if (revealTop < windowHeight - 100) {
+            el.classList.add("active");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
