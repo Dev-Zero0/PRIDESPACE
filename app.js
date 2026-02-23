@@ -206,6 +206,9 @@ function listenToReplies(storyId) {
 }
 
 /* Mobile menu */
-const menuToggle = document.getElementById("menuToggle");
+const toggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
-menuToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
+
+toggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});

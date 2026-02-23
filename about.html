@@ -4,12 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us - PrideSpace</title>
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="images/icon.png" type="image/x-icon" />
+
     <style>
+      :root {
+        --soft-pink: #f8c8dc;
+        --peach: #ffd1a9;
+        --yellow: #fff4a3;
+        --mint: #b8f2d6;
+        --sky-blue: #bde0fe;
+        --lavender: #e4c1f9;
+        --text-dark: #333;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -18,101 +30,179 @@
       }
 
       body {
-        background: url(images/background.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        color: #333;
-        line-height: 1.6;
+        background: linear-gradient(
+          135deg,
+          var(--soft-pink),
+          var(--peach),
+          var(--yellow),
+          var(--mint),
+          var(--sky-blue),
+          var(--lavender)
+        );
+        background-size: 400% 400%;
+        animation: gradientMove 15s ease infinite;
+        color: var(--text-dark);
+        overflow-x: hidden;
       }
 
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(3px);
-        z-index: -1;
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
 
-      header {
-        padding: 30px 20px;
+      /* NAV */
+      nav {
+        padding: 20px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav img {
+        height: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-left: 30px;
+      }
+
+      /* HERO */
+      .header {
         text-align: center;
-        background: #ffffff00;
-        box-shadow: 0 2px 10px #0000000d;
-        backdrop-filter: blur(3px);
+        padding: 80px 20px 40px;
       }
 
-      header h1 {
-        font-size: 36px;
-        background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
+      .header h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        background: linear-gradient(
+          90deg,
+          var(--lavender),
+          var(--sky-blue),
+          var(--mint)
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 10px;
       }
 
-      header p {
-        font-size: 18px;
-        color: #555;
+      .header p {
+        max-width: 600px;
+        margin: auto;
+        opacity: 0.8;
       }
 
-      .about-section {
-        max-width: 1200px;
-        margin: 60px auto;
-        padding: 0 20px;
-        display: flex;
-        gap: 50px;
-        flex-wrap: wrap;
-        align-items: center;
+      /* FLOATING BLOB */
+      .blob {
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        background: var(--mint);
+        filter: blur(60px);
+        border-radius: 50%;
+        top: 120px;
+        right: 10%;
+        animation: float 6s ease-in-out infinite;
+        opacity: 0.6;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* SCROLL ANIMATION */
+      .reveal {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
         transition: all 0.8s ease;
       }
 
-      .about-section.visible {
+      .reveal.active {
         opacity: 1;
         transform: translateY(0);
       }
 
+      /* ABOUT SECTION */
+      .about-section {
+        max-width: 1100px;
+        margin: 60px auto;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(15px);
+        border-radius: 30px;
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        flex-wrap: wrap;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+      }
+
       .about-section img {
         width: 100%;
-        max-width: 500px;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px #0000001a;
+        max-width: 450px;
+        border-radius: 20px;
       }
 
       .about-content {
         flex: 1;
-        min-width: 300px;
+        min-width: 280px;
       }
 
       .about-content h2 {
-        font-size: 32px;
-        background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        font-size: 2rem;
       }
 
       .about-content p {
         margin-bottom: 15px;
-        color: #555;
+        line-height: 1.6;
       }
 
+      /* IMPACT */
+      .impact-strip {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        margin: 60px 0;
+        text-align: center;
+        flex-wrap: wrap;
+      }
+
+      .impact-item h3 {
+        font-size: 2rem;
+        margin-bottom: 5px;
+      }
+
+      .impact-item p {
+        opacity: 0.7;
+      }
+
+      /* TEAM */
       .team-section {
         max-width: 1200px;
         margin: 60px auto;
         padding: 0 20px;
-        user-select: none;
       }
 
       .team-section h2 {
         text-align: center;
-        font-size: 32px;
         margin-bottom: 40px;
-        background: linear-gradient(90deg, #ff7a18, #ffd200, #00c6ff, #7f00ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 2rem;
       }
 
       .team-cards {
@@ -122,31 +212,17 @@
       }
 
       .team-card {
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 20px;
-        width: 250px;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(15px);
+        padding: 25px;
+        border-radius: 25px;
         text-align: center;
-        box-shadow: 0 4px 15px #00000014;
-        transition:
-          transform 0.2s ease,
-          opacity 0.8s ease,
-          translate 0.8s ease,
-          background-color 0.5s ease;
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      .team-card.visible {
-        opacity: 1;
-        transform: translateY(0);
+        transition: 0.3s;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       }
 
       .team-card:hover {
-        transform: translateY(-10px);
-        cursor: pointer;
-        background-color: #ffffff49;
-        backdrop-filter: blur(3px);
+        transform: translateY(-8px);
       }
 
       .team-card img {
@@ -157,79 +233,86 @@
         margin-bottom: 15px;
       }
 
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-
       .team-card h3 {
-        font-size: 20px;
         margin-bottom: 5px;
       }
 
       .team-card p {
         font-size: 14px;
-        color: #777;
+        opacity: 0.7;
+      }
+
+      /* CTA */
+      .cta {
+        text-align: center;
+        margin: 80px auto;
+        padding: 60px 20px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 30px;
+        backdrop-filter: blur(10px);
+        max-width: 900px;
+      }
+
+      .cta h2 {
+        margin-bottom: 20px;
+      }
+
+      .cta a {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        background: var(--lavender);
+        color: var(--text-dark);
+        transition: 0.3s;
+      }
+
+      .cta a:hover {
+        transform: translateY(-3px);
+      }
+
+      /* FOOTER */
+      .site-footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 14px;
+        opacity: 0.7;
       }
 
       @media (max-width: 768px) {
         .about-section {
           flex-direction: column;
           text-align: center;
-          gap: 20px; /* reduce gap */
         }
 
-        .about-content h2 {
-          font-size: 28px;
+        .blob {
+          display: none;
         }
-
-        .about-content p {
-          font-size: 15px;
-        }
-
-        @media (max-width: 480px) {
-          header h1 {
-            font-size: 26px;
-          }
-
-          header p {
-            font-size: 14px;
-          }
-        }
-      }
-
-      /* FOOTER */
-      .site-footer {
-        margin-top: 80px;
-        padding: 30px 20px;
-        text-align: center;
-        font-size: 14px;
-        color: #666;
-        background: #ffffff30;
-        backdrop-filter: blur(6px);
-        border-top: 1px solid #ffffff40;
-      }
-
-      .site-footer p {
-        margin-bottom: 8px;
-      }
-
-      .site-footer .crisis-text {
-        font-style: italic;
-        color: #777;
-        font-size: 13px;
       }
     </style>
   </head>
+
   <body>
-    <header>
+    <nav>
+      <a href="index.html">
+        <img src="images/image.png" alt="PrideSpace logo" />
+      </a>
+      <div>
+        <a href="stories.html">Stories</a>
+      </div>
+    </nav>
+
+    <div class="blob"></div>
+
+    <section class="header reveal">
       <h1>About PrideSpace</h1>
       <p>
         A safe, inclusive platform for sharing LGBTQ+ stories and experiences.
       </p>
-    </header>
+    </section>
 
-    <section class="about-section">
+    <section class="about-section reveal">
       <img
         src="https://s.yimg.com/ny/api/res/1.2/CbXaaE36KwGHZQEKYVGS3A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU0MDtjZj13ZWJw/https://s.yimg.com/os/creatr-uploaded-images/2022-06/ebb4d9f0-f821-11ec-9bfe-0490fcf614d1"
         alt="Community image"
@@ -241,9 +324,24 @@
           compassionate community where everyone feels heard and valued.
         </p>
         <p>
-          From coming out stories to seeking support, our platform brings people
-          together through real experiences, understanding, and encouragement.
+          From coming out stories to seeking support, our platform connects
+          people through real experiences and shared understanding.
         </p>
+      </div>
+    </section>
+
+    <section class="impact-strip reveal">
+      <div class="impact-item">
+        <h3>100%</h3>
+        <p>Anonymous Option</p>
+      </div>
+      <div class="impact-item">
+        <h3>Safe</h3>
+        <p>Community Focused</p>
+      </div>
+      <div class="impact-item">
+        <h3>Voices</h3>
+        <p>That Matter</p>
       </div>
     </section>
 
@@ -307,33 +405,30 @@
       </div>
     </section>
 
+    <section class="cta reveal">
+      <h2>Your story deserves to be heard.</h2>
+      <a href="stories.html">Share Your Story</a>
+    </section>
+
+    <footer class="site-footer">
+      © 2026 PrideSpace. Built for connection.
+    </footer>
+
     <script>
-      // Intersection Observer for fade-up animations
+      const reveals = document.querySelectorAll(".reveal");
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
+              entry.target.classList.add("active");
             }
           });
         },
         { threshold: 0.2 },
       );
 
-      document
-        .querySelectorAll(".about-section, .team-card")
-        .forEach((el) => observer.observe(el));
+      reveals.forEach((el) => observer.observe(el));
     </script>
-
-    <footer class="site-footer">
-      <p>© 2026 PrideSpace. A project for community connection.</p>
-      <p class="crisis-text">
-        If you are in crisis, please contact a local support line. <br />
-        Please note that this project is made for our school's final project,
-        please send me a feedback through this email:
-        <u> seb.archi0714@gmail.com </u>
-      </p>
-    </footer>
   </body>
 </html>
