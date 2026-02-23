@@ -3,80 +3,257 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PrideSpace</title>
+    <title>PrideSpace | Welcome</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+
     <link rel="shortcut icon" href="images/icon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      :root {
+        --soft-pink: #f8c8dc;
+        --peach: #ffd1a9;
+        --yellow: #fff4a3;
+        --mint: #b8f2d6;
+        --sky-blue: #bde0fe;
+        --lavender: #e4c1f9;
+        --text-dark: #333;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          var(--soft-pink),
+          var(--peach),
+          var(--yellow),
+          var(--mint),
+          var(--sky-blue),
+          var(--lavender)
+        );
+        background-size: 400% 400%;
+        animation: gradientMove 12s ease infinite;
+        color: var(--text-dark);
+        overflow-x: hidden;
+      }
+
+      /* Makes the gradient background move */
+
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 8%;
+        backdrop-filter: blur(100px);
+      }
+
+      .img-logo {
+        height: 40px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        opacity: 0.7;
+      }
+
+      .hero {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 8%;
+      }
+
+      .hero-left {
+        flex: 1;
+        animation: fadeUp 1s ease forwards;
+      }
+
+      .hero-left h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          90deg,
+          var(--lavender),
+          var(--sky-blue),
+          var(--mint)
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-left p {
+        max-width: 500px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 15px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          90deg,
+          var(--lavender),
+          var(--sky-blue),
+          var(--mint)
+        );
+        padding: 12px 28px;
+        border-radius: 30px;
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+      }
+
+      .btn-secondary {
+        background: white;
+        padding: 12px 28px;
+        border-radius: 30px;
+        text-decoration: none;
+        color: var(--text-dark);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+      }
+
+      .btn-secondary:hover {
+        transform: translateY(-3px);
+      }
+
+      .hero-right {
+        flex: 1;
+        position: relative;
+        height: 450px;
+      }
+
+      .blob {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        opacity: 0.5;
+        filter: blur(60px);
+      }
+
+      .blob1 {
+        background: var(--soft-pink);
+        top: 50px;
+        right: 100px;
+      }
+
+      .blob2 {
+        background: var(--mint);
+        bottom: 0;
+        right: 0;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 60px;
+        }
+
+        .hero-left h1 {
+          font-size: 2.5rem;
+        }
+
+        .buttons {
+          justify-content: center;
+        }
+
+        .hero-right {
+          height: 250px;
+          margin-top: 40px;
+        }
+      }
+    </style>
   </head>
 
   <body>
     <nav>
-      <div class="logo">
-        <a href="index.html"
-          ><img class="img-logo" src="images/image.png" alt="PrideSpace logo"
-        /></a>
-      </div>
-      <ul id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-      </ul>
-      <div class="menu-toggle" id="menuToggle">
-        <div></div>
-        <div></div>
-        <div></div>
+      <a href="index.html">
+        <img class="img-logo" src="images/image.png" alt="PrideSpace logo" />
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Stories</a>
+        <a href="about.html">About</a>
       </div>
     </nav>
 
-    <div class="container">
-      <!-- LEFT SIDE -->
-      <div class="left-panel">
-        <div class="search-bar">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Search by title, author, or category..."
-          />
-        </div>
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Share Your <span class="gradient-text">Story.</span></h1>
 
-        <div class="stories"></div>
+        <p>
+          PrideSpace is a safe digital space where voices are heard, identities
+          are embraced, and stories inspire connection.
+        </p>
+
+        <div class="buttons">
+          <a href="stories.html" class="btn-primary">Explore Stories</a>
+          <a href="stories.html" class="btn-secondary">Share Yours</a>
+        </div>
       </div>
 
-      <!-- RIGHT SIDE -->
-      <div class="form-card">
-        <div class="form-group">
-          <label>Title</label>
-          <input type="text" id="titleInput" />
-        </div>
-
-        <div class="form-group">
-          <label>Category</label>
-          <select id="categorySelect">
-            <option>Coming Out</option>
-            <option>Identity</option>
-            <option>Support</option>
-            <option>Story</option>
-            <option>Testing</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Pseudonym</label>
-          <input type="text" id="pseudonymInput" />
-        </div>
-
-        <div class="form-group">
-          <label>Your Story</label>
-          <textarea id="storyTextarea"></textarea>
-        </div>
-
-        <button id="publishBtn">Publish Story</button>
+      <div class="hero-right">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
       </div>
-    </div>
-
-    <script type="module" src="app.js"></script>
+    </section>
   </body>
 </html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrideSpace</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="index.html"
+          ><img class="img-logo" src="images/image.png" alt="PrideSpace logo"
+        /></a>
+      </div>
+      <ul id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- LEFT SIDE -->
+      <div class="left-panel">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by title, author, or category..."
+          />
+        </div>
+
+        <div class="stories"></div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="form-card">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="titleInput" />
+        </div>
+
+        <div class="form-group">
+          <label>Category</label>
+          <select id="categorySelect">
+            <option>Coming Out</option>
+            <option>Identity</option>
+            <option>Support</option>
+            <option>Story</option>
+            <option>Testing</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Pseudonym</label>
+          <input type="text" id="pseudonymInput" />
+        </div>
+
+        <div class="form-group">
+          <label>Your Story</label>
+          <textarea id="storyTextarea"></textarea>
+        </div>
+
+        <button id="publishBtn">Publish Story</button>
+      </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
