@@ -91,6 +91,10 @@ nav a:hover {
   border-radius: 2px;
 }
 
+.reply {
+  margin-top: 10px;
+}
+
 /* LAYOUT */
 
 .container {
@@ -202,6 +206,7 @@ textarea {
   color: var(--text-dark);
   margin-top: 8px;
   transition: 0.3s;
+  margin-top: 30px;
 }
 
 input:focus,
@@ -228,6 +233,7 @@ button {
   background: var(--lavender);
   color: var(--text-dark);
   transition: 0.3s ease;
+  margin-top: 20px;
 }
 
 button:hover {
